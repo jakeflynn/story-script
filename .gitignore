@@ -36,7 +36,6 @@ Unity/sysinfo.txt
 
 # Builds
 *.apk
-*.unitypackage
 
 ### UnrealEngine ###
 # Visual Studio 2015 user specific files

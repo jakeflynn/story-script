@@ -4,5 +4,5 @@
 *.fbx filter=lfs diff=lfs merge=lfs -text
 *.tga filter=lfs diff=lfs merge=lfs -text
 *.targa filter=lfs diff=lfs merge=lfs -text
-*.png filter=lfs diff=lfs merge=lfs -text
-*.prefab filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text*.prefab merge=unityyamlmerge eol=lf
+*.unitypackage filter=lfs diff=lfs merge=lfs -text
