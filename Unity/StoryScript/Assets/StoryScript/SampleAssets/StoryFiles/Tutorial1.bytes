@@ -1,0 +1,10 @@
+[dialogue]  {name:"Mystery Man"}
+            This a dialogue element. They are great for breaking up long blocks of exposition
+            and areas where user input is not required.
+[/]
+
+[dialogue]  {name:"Mystery Man"}
+            As you can see (if you are following the script that is) the dialogue is queued in the order it appear in the text. Later on, I will show you how to jump around the text with branches!
+[/]
+
+[alert] This is an alert! Use this to display system messages. Alert tags will spawn a single box with an okay confirmation. [/]

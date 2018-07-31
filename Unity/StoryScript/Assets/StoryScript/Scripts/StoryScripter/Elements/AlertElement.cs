@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class AlertElement : StoryElement
 {
-    Button ConfirmButton;
+    [SerializeField] private Button ConfirmButton;
 
     protected override void Awake()
     {
@@ -13,8 +13,9 @@ public class AlertElement : StoryElement
         if (!ConfirmButton) ConfirmButton = GetComponentInChildren<Button>();
         if (ConfirmButton)
         {
-
+            ConfirmButton.onClick.AddListener(delegate { ClickConfirm(); });
         }
+        else Debug.LogError("AlertElement: Unable to find a valid button object on element.");
     }
 
     public void ClickConfirm()
@@ -28,16 +29,11 @@ public class AlertElement : StoryElement
             {
                 if (link == "" || link == "exit")
                 {
-                    terminate = true;
-                    Destroy(this.gameObject);
+                    Terminate();
                 }
                 ExecuteLink(bname, link);
             }
         }
-        else
-        {
-            terminate = true;
-            Destroy(this.gameObject);
-        }
+        else Terminate();
     }
 }

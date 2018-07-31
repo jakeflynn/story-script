@@ -22,6 +22,12 @@ public class StoryElement : MonoBehaviour {
 
     }
 
+    protected virtual void Terminate()
+    {
+        terminate = true;
+        Destroy(this.gameObject);
+    }
+
     public virtual void Initialize(StoryEngine storyMan, string text, Dictionary<string, string> metaData)
     {
         MetaData = new Dictionary<string, string>(metaData);

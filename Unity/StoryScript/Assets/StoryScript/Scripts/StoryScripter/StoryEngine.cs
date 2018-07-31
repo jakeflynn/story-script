@@ -30,11 +30,14 @@ public class StoryEngine : MonoBehaviour {
     public void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-
+        
         if (!Canvas)
         {
             Debug.LogError("No Canvas reference found in Story Engine. Will be unable to render story script.");
         }
+
+        LoadStoryFromTextAsset(StoryFile);
+        StartExecution();
     }
 
     public void Update()

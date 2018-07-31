@@ -21,10 +21,6 @@ public class DialogueElement : StoryElement
         {
             UnitName.text = s;
         }
-        else
-        {
-            UnitName.text = "I dunno my name";
-        }
     }
 
     public virtual void ClickConfirm()
