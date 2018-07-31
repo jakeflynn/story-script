@@ -1,9 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AlertElement : StoryElement
 {
+    Button ConfirmButton;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if (!ConfirmButton) ConfirmButton = GetComponentInChildren<Button>();
+        if (ConfirmButton)
+        {
+
+        }
+    }
+
     public void ClickConfirm()
     {
         if (MetaData.ContainsKey("branch") && MetaData.ContainsKey("link"))
