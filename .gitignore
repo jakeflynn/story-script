@@ -112,3 +112,4 @@ Unreal/DerivedDataCache/*
 
 
 # End of https://www.gitignore.io/api/unity,unrealengine
+*.unitypackage

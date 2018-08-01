@@ -65,7 +65,6 @@ public class PromptElement : DialogueElement {
         //Set All index not selected to false
         for (int i = 0; i < Choices.Count; ++i)
         {
-            
             string branchName;
             if (MetaData.TryGetValue("branch", out branchName))
             {
