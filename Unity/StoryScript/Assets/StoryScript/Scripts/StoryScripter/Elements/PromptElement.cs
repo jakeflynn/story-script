@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class PromptElement : DialogueElement {
+    public float ButtonSpacing = 60.0f;
     public List<PromptChoice> Choices = new List<PromptChoice>();
     [SerializeField]
     private RectTransform ContentArea;
@@ -21,11 +22,12 @@ public class PromptElement : DialogueElement {
         for (int i = 0; i < Choices.Count; ++i)
         {
             if (!storyEng) storyEng = FindObjectOfType<StoryEngine>();
-            Button button = Instantiate(storyEng.ChoiceButtonTemplate, new Vector3(-10.32f, -60.0f * i, 0.0f), Quaternion.identity, ContentArea).GetComponent<Button>();
+            Button button = Instantiate(storyEng.ChoiceButtonTemplate, new Vector3(0.0f, -ButtonSpacing * i, 0.0f), Quaternion.identity, ContentArea).GetComponent<Button>();
+            button.gameObject.transform.localPosition = new Vector3(0.0f, -ButtonSpacing * i, 0.0f);
             int ind = i;
             button.onClick.AddListener(delegate { ClickButton(ind); });
             if (button.gameObject.GetComponentInChildren<Text>()) button.gameObject.GetComponentInChildren<Text>().text = Choices[i].text;
-            ContentArea.sizeDelta = new Vector2(ContentArea.sizeDelta.x, ContentArea.sizeDelta.y + 60);
+            ContentArea.sizeDelta = new Vector2(ContentArea.sizeDelta.x, ContentArea.sizeDelta.y + ButtonSpacing);
         }
         
     }
@@ -68,8 +70,11 @@ public class PromptElement : DialogueElement {
             if (MetaData.TryGetValue("branch", out branchName))
             {
                 string k = branchName.Trim() + "-" + Choices[i].name.Trim();
-                string val = i == selectedIndex ? "TRUE" : "FALSE";
-                storyEng.PromptResponses.Add(k, val);
+                if (!storyEng.PromptResponses.ContainsKey(k))
+                {
+                    string val = i == selectedIndex ? "TRUE" : "FALSE";
+                    storyEng.PromptResponses.Add(k, val);
+                } 
             }
         }
     }

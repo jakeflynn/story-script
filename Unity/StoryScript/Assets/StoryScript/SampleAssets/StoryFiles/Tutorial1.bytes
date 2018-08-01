@@ -1,10 +1,44 @@
 [dialogue]  {name:"Mystery Man"}
+            Hello. I am going to teach a few things about Story Script. Who am I? I'm just a guy who knows a lot about an obscure markup language for making game dialogue.
+            Click anywhere on the screen to get started.
+[/]
+
+[dialogue]  {name:"Mystery Man"}
             This a dialogue element. They are great for breaking up long blocks of exposition
             and areas where user input is not required.
 [/]
 
 [dialogue]  {name:"Mystery Man"}
             As you can see (if you are following the script that is) the dialogue is queued in the order it appear in the text. Later on, I will show you how to jump around the text with branches!
+            Next up is alerts.
 [/]
 
 [alert] This is an alert! Use this to display system messages. Alert tags will spawn a single box with an okay confirmation. [/]
+
+[prompt]  {name:"Mystery Man", branch:"b1", queue:"true", id:"root"}
+          Next I'll give you a choice. What would you like to learn about next?
+          (choice a: Tell me about branches. @link:branches@)
+          (choice b: I'm interested in metadata. @link:metadata@)
+          (choice c: I'm not interested in anything @link:smartass@)
+[/]
+
+[prompt]  {name:"Mystery Man", branch:"b1", id:"root2"}
+          What would you like to learn about next?
+          (choice a: Tell me about branches. @link:branches@)
+          (choice b: I'm interested in metadata. @link:metadata@)
+          (choice c: I'm not interested in anything @link:smartass@)
+[/]
+
+[dialogue]  {name:"Mystery Man", branch:"b1",  queue:"false", id:"branches", link:"root2"}
+            Branches are like chapters in your dialogue, but unlike chapters, you can access them in any order. Using the metadata tag "branch", the node is added to the branch system.
+            Using the metadata tag "queue" allows you to set whether the node should be added to the node queue by default. All tags except for prompts are added to the queue unless specified, the reverse is true for prompts.
+[/]
+
+[dialogue]  {name:"Mystery Man", branch:"b1",  queue:"false", id:"metadata", link:"root2"}
+            Metadata allows you to set options on nodes or even set custom variables to be used by your own code.
+[/]
+
+[prompt]  {name:"Mystery Man", branch:"b1",  queue:"false", id:"smartass"}
+          Okay wise guy.
+          (choice d: Okay, bye. @link:exit@)
+[/]

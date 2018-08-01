@@ -70,7 +70,6 @@ public class StoryEngine : MonoBehaviour {
     public void StartExecution()
     {
         if (ElementQueue.Count > 0) StartCoroutine(ExecuteScript());
-        Debug.Log("Story Engine: Element Queue is empty, therefore cannot be execute.");
     }
 
     //Create a single alert box outside of the story engine.
